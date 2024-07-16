@@ -187,7 +187,6 @@ body {
   margin-bottom: 15px;
 }
 .body-container_main_section_menu-container_card_menu-section_card_description {
-  overflow: hidden;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -218,6 +217,9 @@ body {
   font-weight: 300;
   line-height: 17px;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .body-container_main_section_menu-container_card_menu-section_card_description_p-container_price {
   color: black;
@@ -227,20 +229,20 @@ body {
   margin: 0;
 }
 .body-container_main_section_menu-container_card_menu-section_card_animation {
-  opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  opacity: 0;
+  width: 0;
   height: 100%;
   border-radius: 0 15px 15px 0;
   color: white;
   background-color: #99E2D0;
   margin: 0 0 0 10px;
+  transition: all 0.4s ease;
 }
 .body-container_main_section_menu-container_card_menu-section_card_animation:hover {
   opacity: 1;
-  transition: all 1s ease-out;
   width: 59px;
   height: 100%;
 }

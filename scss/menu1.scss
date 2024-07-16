@@ -205,7 +205,6 @@ body {
 						box-shadow: $box-shadow;
 						margin-bottom: 15px;
 						&_description {
-							overflow: hidden;
 							display: flex;
 							justify-content: $align-center;
 							flex-direction: $flex-direction-col;
@@ -226,6 +225,9 @@ body {
 								height: 43%;
 								&_description {
 									@include p-card;
+									white-space: nowrap;
+									overflow: hidden;
+									text-overflow: ellipsis;
 								}
 								&_price {
 									@include p-card;
@@ -233,19 +235,17 @@ body {
 							}
 						}
 						&_animation {
+							@include display;
 							opacity: 0;
-							display: flex;
-							justify-content: $align-center;
-							align-items: $align-center;
-							width: 100%;
+							width: 0;
 							height: $width-100;
 							border-radius: 0 15px 15px 0 ;
 							color: white;
 							background-color: #99E2D0;
 							margin: 0 0 0 10px;
+							transition: all 0.4s ease;
 							&:hover {
 								opacity: 1;
-								transition: all 1s ease-out;
 								width: 59px;
 								height: $width-100;
 							}
