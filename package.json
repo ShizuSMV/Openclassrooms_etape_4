@@ -1,0 +1,16 @@
+{
+  "name": "ohmyfood",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./scss/style.scss:./css/style.css ./scss/menu1.scss:./css/menu1.css"
+  },
+  "keywords": [],
+  "author": "Matteo Vandevraye",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "sass": "^1.77.6"
+  }
+}
+

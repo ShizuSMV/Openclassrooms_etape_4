@@ -1,0 +1,364 @@
+/**********Variables**********/
+$background-color-white: white;
+$width-100: 100%;
+$align-center: center;
+$align-left: left;
+$flex-direction-col: column;
+$flex-direction-row: row;
+$border-radius-menu: 35px;
+$border-radius-card: 10px;
+$box-shadow: 0px 0px 12px 0px darkgrey;
+/**********Fin Variables**********/
+/**********Mixins**********/
+@mixin display {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin headings-menu {
+	color: black;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 18px;
+}
+
+@mixin headings-card {
+	color: black;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 21px;
+	margin: 0 0 5px 0;
+}
+
+@mixin p-card {
+	color: black;
+	font-size: 15px;
+	font-weight: 300;
+	line-height: 17px;
+	margin: 0;
+}
+
+@mixin rectangle {
+	display: flex;
+	width: 40px;
+	border: 2px solid #99E2D0;
+}
+
+@mixin footer-p {
+	text-align: left;
+	color: white;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 18px;
+}
+/**********Fin Mixins**********/
+* {
+	font-family: "Roboto", sans-serif;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+
+body {
+	@include display;
+	margin: 0;
+}
+
+.body-container {
+	@include display;
+	flex-direction: $flex-direction-col;
+	max-width: 1440px;
+	min-width: 320px;
+	width: $width-100;
+	/**********Header**********/
+	&_header {
+		@include display;
+		flex-direction: $flex-direction-row;
+		width: $width-100;
+		box-shadow: 0 0 10px black;
+		z-index: 1;
+		&_arrow-logo {
+			@include display;
+			flex-direction: $flex-direction-row;
+			width: $width-100;
+			padding: 0 55px 0 20px;
+			background-color: $background-color-white;
+			&_arrow {
+				color: #353535;
+				font-size: 18px;
+				padding-right: 20px;
+			}
+			&_container {
+				@include display;
+				width: $width-100;
+				height: 63px;
+				margin-bottom: 3px;
+
+				&_img {
+					width: 140px;
+					z-index: 0;
+				}
+			}
+		}
+	}
+	/**********Fin Header**********/
+	/**********Main**********/
+	&_main {
+		@include display;
+		flex-direction: $flex-direction-col;
+		width: $width-100;
+		&_img-container {
+			position: relative;
+			width: $width-100;
+			height: 275px;
+			z-index: 0;
+			&_img {
+				object-fit: cover;
+				width: $width-100;
+				height: 250px;
+			}
+		}
+		&_section_menu-container {
+			@include display;
+			width: $width-100;
+			z-index: 1;
+			margin: -75px 0 20px 0;
+			border-top-left-radius: $border-radius-menu;
+			border-top-right-radius: $border-radius-menu;
+			background-color: #F6F6F6;
+			&_card {
+				@include display;
+				flex-direction: $flex-direction-col;
+				width: 95%;
+				padding: 10px;
+				&_heading-heart {
+					display: flex;
+					justify-content: $align-left;
+					align-items: $align-center;
+					flex-direction: $flex-direction-row;
+					width: $width-100;
+					padding-left: 10px;
+					&_h1 {
+						color: black;
+						font-family: "Shrikhand", serif;
+						font-size: 28px;
+						font-weight: 400;
+						line-height: 40px;
+						padding-right: 30px;
+						margin: 15px 0 30px 0;
+					}
+					&_like {
+						@include display;
+						font-size: 25px;
+						padding-bottom: 17px;
+						&_empty-heart {
+							position: relative;
+						}
+						&_full-heart {
+							position: absolute;
+							color: white;
+							cursor: pointer;
+							font-size: 20px;
+							transition: 0.4s linear;
+							&:hover {
+								color: #9356DC;
+								background: -webkit-linear-gradient(#9356DC,#FF79DA);
+								-webkit-background-clip: text;
+								-webkit-text-fill-color: transparent;
+								background-clip: text;
+								font-size: 27px;
+								transition: 0.4s linear;
+							}
+						}
+					}
+				}
+				&_heading-rectangle {
+					display: $align-left;
+					justify-content: $align-left;
+					text-align: $align-left;
+					align-items: $align-left;
+					flex-direction: $flex-direction-col;
+					width: $width-100;
+					margin: 0 0 5px 0;
+					&_headigns {
+						@include headings-menu;
+						width: $width-100;
+						text-align: $align-left;
+						margin: 0 0 5px 0;
+					}
+					&_rectangle {
+						@include rectangle;
+					}
+				}
+				&_menu-section {
+					@include display;
+					flex-direction: $flex-direction-col;
+					width: $width-100;
+					margin: 10px 0 30px 0;
+					&_card {
+						display: flex;
+						justify-content: $align-center;
+						flex-direction: $flex-direction-col;
+						width: 100%;
+						height: 60px;
+						border-radius: 15px;
+						box-shadow: $box-shadow;
+						padding: 13px;
+						margin-bottom: 15px;
+						&_headigns {
+							@include headings-card;
+						}
+						&_p {
+							display: flex;
+							justify-content: space-between;
+							align-items: $align-center;
+							flex-direction: $flex-direction-row;
+							&_description {
+								@include p-card;
+							}
+							&_price {
+								@include p-card;
+							}
+						}
+					}
+				}
+				&_btn {
+					@include display;
+					width: 186px;
+					height: 50px;
+					border-radius: 25px;
+					box-shadow: 0px 4px 10px 0px darkgray;
+					background: linear-gradient(0deg, #9356DC -11.44%, #FF79DA 123.93%);
+					margin-bottom: 30px;
+					&_p {
+						color: white;
+						font-size: 16px;
+						font-weight: 500;
+						line-height: 18px;
+					}
+				}
+			}
+		}
+	}
+	/**********Fin Main**********/
+	/**********Footer**********/
+	&__footer {
+		@include display;
+		flex-direction: $flex-direction-col;
+		width: $width-100;
+		&__block {
+			display: flex;
+			justify-content: left;
+			align-items: $align-center;
+			flex-direction: $flex-direction-col;
+			width: $width-100;
+			padding: 25px;
+			background: #353535;
+			&__logo-container {
+				display: flex;
+				justify-content: left;
+				width: $width-100;
+				height: 17px;
+				margin: 0 0 25px 0;
+				&__img {
+					width: 100px;
+				}
+			}
+			&__nav {
+				display: flex;
+				flex-direction: $flex-direction-col;
+				width: $width-100;
+				&__direction {
+					display: flex;
+					align-items: $align-center;
+					flex-direction: $flex-direction-col;
+					gap: 7px;
+					padding: 0 0 7px 0;
+					&__block {
+						width: $width-100;
+						gap: 5px;
+						&__knife-fork {
+							width: 11px;
+							font-size: 15px;
+							color: white;
+						}
+						&__contact {
+							width: 11px;
+							font-size: 12px;
+							color: white;
+						}
+						&__p {
+							@include footer-p;
+							padding-left: 10px;
+						}
+					}
+				}
+				&__block {
+					display: flex;
+					flex-direction: $flex-direction-col;
+					gap: 7px;
+					&__p {
+						@include footer-p;
+					}
+				}
+			}
+		}
+	}
+	/**********Fin Footer**********/
+}
+
+@media screen and (min-width: 768px) {
+	.body-container_main_img-container {
+		margin: 60px;
+		&_img {
+			position: absolute;
+			top: -190px;
+			height: 490px;
+		}
+	}
+	.body-container_main_section_menu-container {
+		width: 70%;
+		&_card {
+			width: 65%;
+			&_heading-heart {
+				justify-content: center;
+				padding: 0;
+				margin: 20px 0 0 0;
+			}
+		}
+	}
+
+	.body-container__footer__block {
+		justify-content: right;
+		flex-direction: row-reverse;
+		padding: 40px 20px 20px 0;
+		&__logo-container {
+			align-items: $align-center;
+			width: 137px;
+			height: 100%;
+			padding: 0;
+			margin: 0 0 0 80px;
+		}
+		&__nav {
+			display: flex;
+			justify-content: space-around;
+			flex-direction: $flex-direction-row;
+			width: 600px;
+			gap: 7px;
+			&__direction {
+				flex-direction: $flex-direction-row;
+				padding: 0;
+				&__block {
+					width: 190px;
+				}
+			}
+			&__block {
+				justify-content: space-between;
+				align-items: $align-center;
+				flex-direction: $flex-direction-row;
+				width: 190px;
+				gap: 7px;
+			}
+		}
+	}
+}
