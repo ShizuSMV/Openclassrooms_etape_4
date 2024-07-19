@@ -252,7 +252,7 @@ body {
   flex-direction: column;
   width: 100%;
   gap: 18px;
-  margin: 0 0 50px 0;
+  margin: 0 0 35px 0;
 }
 .body-container__main__section-restaurant__container__card-container {
   display: flex;
@@ -492,7 +492,7 @@ body {
     gap: 50px;
   }
   .body-container__main__section-restaurant__container__card-container {
-    width: 45%;
+    width: 47%;
   }
   .body-container__main__section-restaurant__container__card-container__card {
     width: 95%;

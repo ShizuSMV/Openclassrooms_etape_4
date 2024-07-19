@@ -30,7 +30,7 @@ body {
   /**********Footer**********/
   /**********Fin Footer**********/
 }
-.body-container_header {
+.body-container__header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +39,7 @@ body {
   box-shadow: 0 0 10px black;
   z-index: 1;
 }
-.body-container_header_arrow-logo {
+.body-container__header__arrow-logo {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,12 +48,12 @@ body {
   padding: 0 55px 0 20px;
   background-color: white;
 }
-.body-container_header_arrow-logo_arrow {
+.body-container__header__arrow-logo__arrow {
   color: #353535;
   font-size: 18px;
   padding-right: 20px;
 }
-.body-container_header_arrow-logo_container {
+.body-container__header__arrow-logo__container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,29 +61,29 @@ body {
   height: 63px;
   margin-bottom: 3px;
 }
-.body-container_header_arrow-logo_container_img {
+.body-container__header__arrow-logo__container__img {
   width: 140px;
   z-index: 0;
 }
-.body-container_main {
+.body-container__main {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
 }
-.body-container_main_img-container {
+.body-container__main__img-container {
   position: relative;
   width: 100%;
   height: 275px;
   z-index: 0;
 }
-.body-container_main_img-container_img {
+.body-container__main__img-container__img {
   object-fit: cover;
   width: 100%;
   height: 250px;
 }
-.body-container_main_section_menu-container {
+.body-container__main__section__menu-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,7 +94,7 @@ body {
   border-top-right-radius: 35px;
   background-color: #F6F6F6;
 }
-.body-container_main_section_menu-container_card {
+.body-container__main__section__menu-container__card {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,15 +102,14 @@ body {
   width: 95%;
   padding: 10px;
 }
-.body-container_main_section_menu-container_card_heading-heart {
+.body-container__main__section__menu-container__card__heading-heart {
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
   width: 100%;
-  padding-left: 10px;
 }
-.body-container_main_section_menu-container_card_heading-heart_h1 {
+.body-container__main__section__menu-container__card__heading-heart__h1 {
   color: black;
   font-family: "Shrikhand", serif;
   font-size: 28px;
@@ -119,24 +118,25 @@ body {
   padding-right: 30px;
   margin: 15px 0 30px 0;
 }
-.body-container_main_section_menu-container_card_heading-heart_like {
+.body-container__main__section__menu-container__card__heading-heart__like {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 25px;
-  padding-bottom: 17px;
+  padding: 0 0 17px 0;
+  margin: 0 10px 0 0;
 }
-.body-container_main_section_menu-container_card_heading-heart_like_empty-heart {
+.body-container__main__section__menu-container__card__heading-heart__like__empty-heart {
   position: relative;
 }
-.body-container_main_section_menu-container_card_heading-heart_like_full-heart {
+.body-container__main__section__menu-container__card__heading-heart__like__full-heart {
   position: absolute;
   color: white;
   cursor: pointer;
   font-size: 20px;
   transition: 0.4s linear;
 }
-.body-container_main_section_menu-container_card_heading-heart_like_full-heart:hover {
+.body-container__main__section__menu-container__card__heading-heart__like__full-heart:hover {
   color: #9356DC;
   background: -webkit-linear-gradient(#9356DC, #FF79DA);
   -webkit-background-clip: text;
@@ -145,7 +145,7 @@ body {
   font-size: 27px;
   transition: 0.4s linear;
 }
-.body-container_main_section_menu-container_card_heading-rectangle {
+.body-container__main__section__menu-container__card__heading-rectangle {
   display: left;
   justify-content: left;
   text-align: left;
@@ -154,7 +154,7 @@ body {
   width: 100%;
   margin: 0 0 5px 0;
 }
-.body-container_main_section_menu-container_card_heading-rectangle_headigns {
+.body-container__main__section__menu-container__card__heading-rectangle__headigns {
   color: black;
   font-size: 16px;
   font-weight: 300;
@@ -163,12 +163,12 @@ body {
   text-align: left;
   margin: 0 0 5px 0;
 }
-.body-container_main_section_menu-container_card_heading-rectangle_rectangle {
+.body-container__main__section__menu-container__card__heading-rectangle__rectangle {
   display: flex;
   width: 40px;
   border: 2px solid #99E2D0;
 }
-.body-container_main_section_menu-container_card_menu-section {
+.body-container__main__section__menu-container__card__menu-section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -176,59 +176,61 @@ body {
   width: 100%;
   margin: 10px 0 30px 0;
 }
-.body-container_main_section_menu-container_card_menu-section_card {
+.body-container__main__section__menu-container__card__menu-section__card {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   width: 100%;
-  height: 60px;
+  height: 72px;
+  cursor: pointer;
+  background-color: white;
   border-radius: 15px;
   box-shadow: 0px 0px 12px 0px darkgrey;
   margin-bottom: 15px;
 }
-.body-container_main_section_menu-container_card_menu-section_card_description {
+.body-container__main__section__menu-container__card__menu-section__card__description {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
   height: 100%;
-  gap: 10px;
-  padding: 10px 0 10px 10px;
-  z-index: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 15px 0 15px 15px;
 }
-.body-container_main_section_menu-container_card_menu-section_card_description_headigns {
+.body-container__main__section__menu-container__card__menu-section__card__description__headigns {
   color: black;
   font-size: 18px;
   font-weight: 500;
   line-height: 21px;
   margin: 0;
-  height: 43%;
 }
-.body-container_main_section_menu-container_card_menu-section_card_description_p-container {
+.body-container__main__section__menu-container__card__menu-section__card__description__p {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  height: 43%;
-}
-.body-container_main_section_menu-container_card_menu-section_card_description_p-container_description {
   color: black;
   font-size: 15px;
   font-weight: 300;
   line-height: 17px;
+  width: 280px;
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.body-container_main_section_menu-container_card_menu-section_card_description_p-container_price {
-  color: black;
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 17px;
-  margin: 0;
+.body-container__main__section__menu-container__card__menu-section__card__price-animation {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
 }
-.body-container_main_section_menu-container_card_menu-section_card_animation {
+.body-container__main__section__menu-container__card__menu-section__card__price-animation__price {
+  display: flex;
+  align-items: end;
+  height: 100%;
+  padding: 0 0 15px 0;
+  margin: 0 0 0 5px;
+}
+.body-container__main__section__menu-container__card__menu-section__card__price-animation__animation {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -241,12 +243,12 @@ body {
   margin: 0 0 0 10px;
   transition: all 0.4s ease;
 }
-.body-container_main_section_menu-container_card_menu-section_card_animation:hover {
+.body-container__main__section__menu-container__card__menu-section__card__price-animation__animation:hover {
   opacity: 1;
-  width: 59px;
+  width: 60px;
   height: 100%;
 }
-.body-container_main_section_menu-container_card_btn {
+.body-container__main__section__menu-container__card__btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -257,7 +259,7 @@ body {
   background: linear-gradient(0deg, #9356DC -11.44%, #FF79DA 123.93%);
   margin-bottom: 30px;
 }
-.body-container_main_section_menu-container_card_btn_p {
+.body-container__main__section__menu-container__card__btn__p {
   color: white;
   font-size: 16px;
   font-weight: 500;
@@ -337,21 +339,21 @@ body {
 }
 
 @media screen and (min-width: 768px) {
-  .body-container_main_img-container {
+  .body-container__main__img-container {
     margin: 60px;
   }
-  .body-container_main_img-container_img {
+  .body-container__main__img-container__img {
     position: absolute;
     top: -190px;
     height: 490px;
   }
-  .body-container_main_section_menu-container {
+  .body-container__main__section__menu-container {
     width: 70%;
   }
-  .body-container_main_section_menu-container_card {
+  .body-container__main__section__menu-container__card {
     width: 65%;
   }
-  .body-container_main_section_menu-container_card_heading-heart {
+  .body-container__main__section__menu-container__card__heading-heart {
     justify-content: center;
     padding: 0;
     margin: 20px 0 0 0;

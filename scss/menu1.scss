@@ -32,11 +32,16 @@ $box-shadow: 0px 0px 12px 0px darkgrey;
 }
 
 @mixin p-card {
+	display: flex;
 	color: black;
 	font-size: 15px;
 	font-weight: 300;
 	line-height: 17px;
+	width: 280px;
 	margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 @mixin rectangle {
@@ -71,30 +76,30 @@ body {
 	min-width: 320px;
 	width: $width-100;
 	/**********Header**********/
-	&_header {
+	&__header {
 		@include display;
 		flex-direction: $flex-direction-row;
 		width: $width-100;
 		box-shadow: 0 0 10px black;
 		z-index: 1;
-		&_arrow-logo {
+		&__arrow-logo {
 			@include display;
 			flex-direction: $flex-direction-row;
 			width: $width-100;
 			padding: 0 55px 0 20px;
 			background-color: $background-color-white;
-			&_arrow {
+			&__arrow {
 				color: #353535;
 				font-size: 18px;
 				padding-right: 20px;
 			}
-			&_container {
+			&__container {
 				@include display;
 				width: $width-100;
 				height: 63px;
 				margin-bottom: 3px;
 
-				&_img {
+				&__img {
 					width: 140px;
 					z-index: 0;
 				}
@@ -103,22 +108,22 @@ body {
 	}
 	/**********Fin Header**********/
 	/**********Main**********/
-	&_main {
+	&__main {
 		@include display;
 		flex-direction: $flex-direction-col;
 		width: $width-100;
-		&_img-container {
+		&__img-container {
 			position: relative;
 			width: $width-100;
 			height: 275px;
 			z-index: 0;
-			&_img {
+			&__img {
 				object-fit: cover;
 				width: $width-100;
 				height: 250px;
 			}
 		}
-		&_section_menu-container {
+		&__section__menu-container {
 			@include display;
 			width: $width-100;
 			z-index: 1;
@@ -126,19 +131,18 @@ body {
 			border-top-left-radius: $border-radius-menu;
 			border-top-right-radius: $border-radius-menu;
 			background-color: #F6F6F6;
-			&_card {
+			&__card {
 				@include display;
 				flex-direction: $flex-direction-col;
 				width: 95%;
 				padding: 10px;
-				&_heading-heart {
+				&__heading-heart {
 					display: flex;
-					justify-content: $align-left;
+					justify-content: space-between;
 					align-items: $align-center;
 					flex-direction: $flex-direction-row;
 					width: $width-100;
-					padding-left: 10px;
-					&_h1 {
+					&__h1 {
 						color: black;
 						font-family: "Shrikhand", serif;
 						font-size: 28px;
@@ -147,14 +151,15 @@ body {
 						padding-right: 30px;
 						margin: 15px 0 30px 0;
 					}
-					&_like {
+					&__like {
 						@include display;
 						font-size: 25px;
-						padding-bottom: 17px;
-						&_empty-heart {
+						padding: 0 0 17px 0;
+						margin: 0 10px 0 0 ;
+						&__empty-heart {
 							position: relative;
 						}
-						&_full-heart {
+						&__full-heart {
 							position: absolute;
 							color: white;
 							cursor: pointer;
@@ -172,7 +177,7 @@ body {
 						}
 					}
 				}
-				&_heading-rectangle {
+				&__heading-rectangle {
 					display: $align-left;
 					justify-content: $align-left;
 					text-align: $align-left;
@@ -180,79 +185,80 @@ body {
 					flex-direction: $flex-direction-col;
 					width: $width-100;
 					margin: 0 0 5px 0;
-					&_headigns {
+					&__headigns {
 						@include headings-menu;
 						width: $width-100;
 						text-align: $align-left;
 						margin: 0 0 5px 0;
 					}
-					&_rectangle {
+					&__rectangle {
 						@include rectangle;
 					}
 				}
-				&_menu-section {
+				&__menu-section {
 					@include display;
 					flex-direction: $flex-direction-col;
 					width: $width-100;
 					margin: 10px 0 30px 0;
-					&_card {
+					&__card {
 						display: flex;
 						justify-content: space-between;
 						flex-direction: $flex-direction-row;
-						width: 100%;
-						height: 60px;
+						width: $width-100;
+						height: 72px;
+						cursor: pointer;
+						background-color: white;
 						border-radius: 15px;
 						box-shadow: $box-shadow;
 						margin-bottom: 15px;
-						&_description {
+						&__description {
 							display: flex;
-							justify-content: $align-center;
+							justify-content: space-between;
 							flex-direction: $flex-direction-col;
-							width: $width-100;
+							width: 90%;
 							height: $width-100;
-							gap: 10px;
-							padding: 10px 0 10px 10px;
-							z-index: 0;
-							&_headigns {
+							white-space: nowrap;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							padding: 15px 0 15px 15px;
+							&__headigns {
 								@include headings-card;
-								height: 43%;
 							}
-							&_p-container {
-								display: flex;
-								justify-content: space-between;
-								align-items: $align-center;
-								flex-direction: $flex-direction-row;
-								height: 43%;
-								&_description {
-									@include p-card;
-									white-space: nowrap;
-									overflow: hidden;
-									text-overflow: ellipsis;
-								}
-								&_price {
-									@include p-card;
-								}
+							&__p {
+								@include p-card;
 							}
 						}
-						&_animation {
-							@include display;
-							opacity: 0;
-							width: 0;
+						&__price-animation {
+							display: flex;
+							justify-content: space-between;
 							height: $width-100;
-							border-radius: 0 15px 15px 0 ;
-							color: white;
-							background-color: #99E2D0;
-							margin: 0 0 0 10px;
-							transition: all 0.4s ease;
-							&:hover {
-								opacity: 1;
-								width: 59px;
+							&__price {
+								display: flex;
+								align-items: end;
 								height: $width-100;
+								padding: 0 0 15px 0;
+								margin: 0 0 0 5px;
+							}
+							&__animation {
+								@include display;
+								opacity: 0;
+								width: 0;
+								height: $width-100;
+								border-radius: 0 15px 15px 0 ;
+								color: white;
+								background-color: #99E2D0;
+								margin: 0 0 0 10px;
+								transition: all 0.4s ease;
+								&:hover {
+									opacity: 1;
+									width: 60px;
+									height: $width-100;
+								}
 							}
 						}
 					}
 				}
-				&_btn {
+				&__btn {
 					@include display;
 					width: 186px;
 					height: 50px;
@@ -260,7 +266,7 @@ body {
 					box-shadow: 0px 4px 10px 0px darkgray;
 					background: linear-gradient(0deg, #9356DC -11.44%, #FF79DA 123.93%);
 					margin-bottom: 30px;
-					&_p {
+					&__p {
 						color: white;
 						font-size: 16px;
 						font-weight: 500;
@@ -338,19 +344,19 @@ body {
 }
 
 @media screen and (min-width: 768px) {
-	.body-container_main_img-container {
+	.body-container__main__img-container {
 		margin: 60px;
-		&_img {
+		&__img {
 			position: absolute;
 			top: -190px;
 			height: 490px;
 		}
 	}
-	.body-container_main_section_menu-container {
+	.body-container__main__section__menu-container {
 		width: 70%;
-		&_card {
+		&__card {
 			width: 65%;
-			&_heading-heart {
+			&__heading-heart {
 				justify-content: center;
 				padding: 0;
 				margin: 20px 0 0 0;
