@@ -434,6 +434,37 @@ body {
 
 /*****************************Fin Version mobile*****************************/
 /*****************************Version tablette*****************************/
+@media screen and (min-width: 700px) {
+  /**********Functioning**********/
+  .body-container__main__section-functioning__direction {
+    width: 95%;
+    height: 150px;
+    margin: 0;
+    flex-direction: row;
+  }
+  .body-container__main__section-functioning__direction__btn {
+    width: 31%;
+    height: 70px;
+  }
+  /**********Fin Functioning**********/
+  /**********Restaurants**********/
+  .body-container__main__section-restaurant {
+    padding: 0 20px;
+  }
+  .body-container__main__section-restaurant__container {
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  .body-container__main__section-restaurant__container__card-container {
+    width: 47%;
+  }
+  .body-container__main__section-restaurant__container__card-container__card {
+    width: 95%;
+  }
+  /**********Fin Restaurants**********/
+}
 /*****************************Fin Version tablette*****************************/
 /*****************************Version desktop*****************************/
 @media screen and (min-width: 1024px) {
@@ -489,7 +520,7 @@ body {
     justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 40px;
   }
   .body-container__main__section-restaurant__container__card-container {
     width: 47%;

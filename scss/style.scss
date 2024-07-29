@@ -438,8 +438,36 @@ body {
 /*****************************Fin Version mobile*****************************/
 
 /*****************************Version tablette*****************************/
-@media screen and (min-width: 500px) {
-
+@media screen and (min-width: 700px) {
+	/**********Functioning**********/
+	.body-container__main__section-functioning__direction {
+		width: 95%;
+		height: 150px;
+		margin: 0;
+		flex-direction: row;
+		&__btn {
+			width: 31%;
+			height: 70px;
+		}
+	}
+	/**********Fin Functioning**********/
+	/**********Restaurants**********/
+	.body-container__main__section-restaurant {
+		padding: 0 20px;
+		&__container {
+			justify-content: space-between;
+			flex-direction: $flex-direction-row;
+			flex-wrap: wrap;
+			gap: 30px;
+			&__card-container {
+				width: 47%;
+				&__card {
+					width: 95%;
+				}
+			}
+		}
+	}
+	/**********Fin Restaurants**********/
 }
 /*****************************Fin Version tablette*****************************/
 
@@ -497,7 +525,7 @@ body {
 			justify-content: space-between;
 			flex-direction: $flex-direction-row;
 			flex-wrap: wrap;
-			gap: 50px;
+			gap: 40px;
 			&__card-container {
 				width: 47%;
 				&__card {
