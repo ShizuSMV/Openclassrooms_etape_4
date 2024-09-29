@@ -28,16 +28,17 @@ $box-shadow: 0px 0px 12px 0px darkgrey;
 	font-size: 18px;
 	font-weight: 500;
 	line-height: 21px;
-	margin: 0;
+	margin: 0 0 5px 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 @mixin p-card {
-	display: flex;
 	color: black;
-	font-size: 15px;
+	font-size: 14px;
 	font-weight: 300;
 	line-height: 17px;
-	width: 280px;
 	margin: 0;
 	white-space: nowrap;
 	overflow: hidden;
@@ -47,7 +48,7 @@ $box-shadow: 0px 0px 12px 0px darkgrey;
 @mixin rectangle {
 	display: flex;
 	width: 40px;
-	border: 2px solid #99E2D0;
+	border: 2px solid #99e2d0;
 }
 
 @mixin footer-p {
@@ -58,6 +59,27 @@ $box-shadow: 0px 0px 12px 0px darkgrey;
 	line-height: 18px;
 }
 /**********Fin Mixins**********/
+/**********Keyframes**********/
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes hideLoader {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+/**********Fin Keyframes**********/
+
 * {
 	font-family: "Roboto", sans-serif;
 	box-sizing: border-box;
@@ -66,7 +88,28 @@ $box-shadow: 0px 0px 12px 0px darkgrey;
 
 body {
 	@include display;
-	margin: 0;
+	margin: 0 auto;
+}
+
+/*****************************Version mobile*****************************/
+.body__loader-container {
+	@include display;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100vw;
+	height: 100vh;
+	background-color: white;
+	animation: hideLoader 0.5s forwards 3s; // J'utilise forwards sinon le loader reste sur la fenetre
+	&__loader {
+		width: 80px;
+		height: 80px;
+		border: 12px solid #f3f3f3;
+		border-radius: 50%;
+		border-top: 12px solid #9356dc;
+		animation: spin 2s linear infinite;
+	}
 }
 
 .body-container {
@@ -75,6 +118,9 @@ body {
 	max-width: 1440px;
 	min-width: 320px;
 	width: $width-100;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s 3s, opacity 0.5s ease;
 	/**********Header**********/
 	&__header {
 		@include display;
@@ -130,7 +176,7 @@ body {
 			margin: -75px 0 20px 0;
 			border-top-left-radius: $border-radius-menu;
 			border-top-right-radius: $border-radius-menu;
-			background-color: #F6F6F6;
+			background-color: #f6f6f6;
 			&__card {
 				@include display;
 				flex-direction: $flex-direction-col;
@@ -155,19 +201,19 @@ body {
 						@include display;
 						font-size: 25px;
 						padding: 0 0 17px 0;
-						margin: 0 10px 0 0 ;
+						margin: 0 10px 0 0;
 						&__empty-heart {
 							position: relative;
 						}
 						&__full-heart {
 							position: absolute;
-							color: white;
+							color: #f6f6f6;
 							cursor: pointer;
 							font-size: 20px;
 							transition: 0.4s linear;
 							&:hover {
-								color: #9356DC;
-								background: -webkit-linear-gradient(#9356DC,#FF79DA);
+								color: #9356dc;
+								background: -webkit-linear-gradient(#9356dc, #ff79da);
 								-webkit-background-clip: text;
 								-webkit-text-fill-color: transparent;
 								background-clip: text;
@@ -200,60 +246,81 @@ body {
 					flex-direction: $flex-direction-col;
 					width: $width-100;
 					margin: 10px 0 30px 0;
+
 					&__card {
 						display: flex;
 						justify-content: space-between;
-						flex-direction: $flex-direction-row;
+						align-items: $align-center;
+						position: relative;
 						width: $width-100;
 						height: 72px;
-						cursor: pointer;
-						background-color: white;
 						border-radius: 15px;
-						box-shadow: $box-shadow;
-						margin-bottom: 15px;
+						background-color: white;
+						margin: 0 0 15px 0;
+						transition: all 0.4s ease;
+						&:hover {
+							.body-container__main__section__menu-container__card__menu-section__card__checkmark-container {
+								opacity: 1;
+								width: 60px; // Le checkmark prend 30% de l'espace
+								margin: 0;
+
+								&__icon {
+									opacity: 1; // Le checkmark devient visible
+								}
+							}
+						}
 						&__description {
 							display: flex;
 							justify-content: space-between;
-							flex-direction: $flex-direction-col;
-							width: 90%;
-							height: $width-100;
-							white-space: nowrap;
+							align-items: $align-center;
 							overflow: hidden;
-							text-overflow: ellipsis;
-							padding: 15px 0 15px 15px;
-							&__headigns {
-								@include headings-card;
+							width: $width-100;
+							padding: 15px 10px 15px 15px;
+							transition: width 0.4s ease;
+
+							&__heading-p {
+								display: flex;
+								justify-content: $align-center;
+								flex-direction: $flex-direction-col;
+								width: $width-100;
+								height: $width-100;
+								overflow: hidden;
+								margin: 0;
+								&__heading {
+									@include headings-card;
+								}
+								&__p {
+									@include p-card;
+								}
 							}
-							&__p {
-								@include p-card;
+							&__price-container {
+								@include display;
+								width: 30px;
+								height: $width-100;
+								background-color: white;
+								margin: 0 0 0 4px;
+								&__price {
+									text-align: $align-center;
+									font-size: 15px;
+									font-weight: 700;
+									line-height: 17px;
+								}
 							}
 						}
-						&__price-animation {
-							display: flex;
-							justify-content: space-between;
+						&__checkmark-container {
+							@include display;
+							background-color: #99e2d0;
+							width: 0;
 							height: $width-100;
-							&__price {
-								display: flex;
-								align-items: end;
-								height: $width-100;
-								padding: 0 0 15px 0;
-								margin: 0 0 0 5px;
-							}
-							&__animation {
-								@include display;
+							opacity: 0;
+							border-radius: 0px 15px 15px 0px;
+							margin: 0;
+							transition: all 0.4s ease;
+							&__icon {
+								font-size: 20px;
 								opacity: 0;
-								width: 0;
-								height: $width-100;
-								border-radius: 0 15px 15px 0 ;
 								color: white;
-								background-color: #99E2D0;
-								margin: 0 0 0 10px;
-								transition: all 0.4s ease;
-								&:hover {
-									opacity: 1;
-									width: 60px;
-									height: $width-100;
-								}
+								transition: opacity 0.4s ease;
 							}
 						}
 					}
@@ -264,8 +331,13 @@ body {
 					height: 50px;
 					border-radius: 25px;
 					box-shadow: 0px 4px 10px 0px darkgray;
-					background: linear-gradient(0deg, #9356DC -11.44%, #FF79DA 123.93%);
+					background: linear-gradient(0deg, #9356dc -11.44%, #ff79da 123.93%);
 					margin-bottom: 30px;
+					&:hover {
+						transition: 5ms;
+						background: linear-gradient(0deg, #a877e3 -11.44%, #ff93e1 123.93%);
+						box-shadow: 0px 4px 10px rgb(133, 133, 133);
+					}
 					&__p {
 						color: white;
 						font-size: 16px;
@@ -342,7 +414,14 @@ body {
 	}
 	/**********Fin Footer**********/
 }
+.body__loader-container + .body-container {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.5s ease;
+}
+/*****************************Fin Version mobile*****************************/
 
+/*****************************Version tablette*****************************/
 @media screen and (min-width: 768px) {
 	.body-container__main__img-container {
 		margin: 60px;
@@ -398,3 +477,4 @@ body {
 		}
 	}
 }
+/*****************************Fin Version tablette*****************************/

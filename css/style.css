@@ -2,6 +2,25 @@
 /**********Fin Variables**********/
 /**********Mixins**********/
 /**********Fin Mixins**********/
+/**********Keyframes**********/
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes hideLoader {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+/**********Fin Keyframes**********/
 * {
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
@@ -16,6 +35,28 @@ body {
 }
 
 /*****************************Version mobile*****************************/
+.body__loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  animation: hideLoader 0.5s forwards 3s;
+}
+.body__loader-container__loader {
+  width: 80px;
+  height: 80px;
+  border: 12px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 12px solid #9356dc;
+  animation: spin 2s linear infinite;
+}
+
 .body-container {
   display: flex;
   justify-content: center;
@@ -24,6 +65,9 @@ body {
   max-width: 1440px;
   min-width: 320px;
   width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 3.5s, opacity 0.5s ease;
   /**********Header**********/
   /**********Fin Header**********/
   /**********Main**********/
@@ -59,7 +103,7 @@ body {
   flex-direction: row;
   width: 100%;
   gap: 15px;
-  background-color: #EAEAEA;
+  background-color: #eaeaea;
 }
 .body-container__header__location-block__location-dot {
   color: black;
@@ -92,7 +136,7 @@ body {
   flex-direction: column;
   width: 100%;
   margin-bottom: 40px 0 70px 0;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
 }
 .body-container__main__section-info__h1 {
   text-align: center;
@@ -129,8 +173,13 @@ body {
   border: none;
   border-radius: 25px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2509803922);
-  background: linear-gradient(0deg, #9356DC -11.44%, #FF79DA 123.93%);
+  background: linear-gradient(0deg, #9356dc -11.44%, #ff79da 123.93%);
   padding: 15px 25px;
+}
+.body-container__main__section-info__btn-explore-restaurant__container__btn:hover {
+  transition: 500ms;
+  background: linear-gradient(0deg, #a877e3 -11.44%, #ff93e1 123.93%);
+  box-shadow: 0px 4px 10px rgb(133, 133, 133);
 }
 .body-container__main__section-functioning {
   display: flex;
@@ -183,7 +232,7 @@ body {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background-color: #9356DC;
+  background-color: #9356dc;
 }
 .body-container__main__section-functioning__direction__btn__inside {
   display: flex;
@@ -192,11 +241,13 @@ body {
   gap: 25px;
 }
 .body-container__main__section-functioning__direction__btn__inside__icon {
-  color: #7E7E7E;
+  color: #7e7e7e;
   font-size: 18px;
 }
 .body-container__main__section-functioning__direction__btn__inside__icon:hover {
-  color: #9356DC;
+  transition: 500ms;
+  font-size: 22px;
+  color: #9356dc;
 }
 .body-container__main__section-functioning__direction__btn__inside__p {
   text-align: center;
@@ -206,25 +257,25 @@ body {
   line-height: 18px;
 }
 .body-container__main__section-functioning__direction__btn__phone {
-  color: #7E7E7E;
+  color: #7e7e7e;
   font-size: 20px;
 }
 .body-container__main__section-functioning__direction__btn__phone:hover {
-  color: #9356DC;
+  color: #9356dc;
 }
 .body-container__main__section-functioning__direction__btn__list {
-  color: #7E7E7E;
+  color: #7e7e7e;
   font-size: 20px;
 }
 .body-container__main__section-functioning__direction__btn__list:hover {
-  color: #9356DC;
+  color: #9356dc;
 }
 .body-container__main__section-functioning__direction__btn__store {
-  color: #7E7E7E;
+  color: #7e7e7e;
   font-size: 20px;
 }
 .body-container__main__section-functioning__direction__btn__store:hover {
-  color: #9356DC;
+  color: #9356dc;
 }
 .body-container__main__section-restaurant {
   display: flex;
@@ -232,7 +283,7 @@ body {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
 }
 .body-container__main__section-restaurant__h3 {
   color: black;
@@ -293,7 +344,7 @@ body {
   font-size: 14px;
   font-weight: 500;
   line-height: 16px;
-  background-color: #99E2D0;
+  background-color: #99e2d0;
   width: 80px;
   height: 29px;
   border-radius: 2px;
@@ -336,28 +387,35 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
-  font-size: 25px;
-  padding: 12px 0 17px 0;
-}
-.body-container__main__section-restaurant__container__card-container__card__description-container__like__empty-heart {
   position: relative;
+  width: 25px;
+  height: 25px;
 }
-.body-container__main__section-restaurant__container__card-container__card__description-container__like__full-heart {
+.body-container__main__section-restaurant__container__card-container__card__description-container__like__black-heart {
   position: absolute;
-  color: white;
-  cursor: pointer;
-  font-size: 20px;
-  transition: 0.4s linear;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  color: black;
+  z-index: 0;
 }
-.body-container__main__section-restaurant__container__card-container__card__description-container__like__full-heart:hover {
-  color: #9356DC;
-  background: -webkit-linear-gradient(#9356DC, #FF79DA);
+.body-container__main__section-restaurant__container__card-container__card__description-container__like__white-heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: white;
+  z-index: 1;
+  transition: all 0.4s linear;
+}
+.body-container__main__section-restaurant__container__card-container__card__description-container__like__white-heart:hover {
+  font-size: 27px;
+  background: linear-gradient(135deg, #9356dc, #ff79da);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 27px;
-  transition: 0.4s linear;
 }
 .body-container__footer {
   display: flex;
@@ -430,6 +488,12 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 18px;
+}
+
+.body__loader-container + .body-container {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 
 /*****************************Fin Version mobile*****************************/

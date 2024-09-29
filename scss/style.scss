@@ -1,10 +1,10 @@
 /**********Variables**********/
-$gray-icons: #7E7E7E;
-$background-gradient: linear-gradient(0deg, #9356DC -11.44%, #FF79DA 123.93%);
-$purple-icons: #9356DC;
-$rectangle-mint-color: #99E2D0;
-$rectangle-green-color:#008766;
-$gray-background: #F6F6F6;
+$gray-icons: #7e7e7e;
+$background-gradient: linear-gradient(0deg, #9356dc -11.44%, #ff79da 123.93%);
+$purple-icons: #9356dc;
+$rectangle-mint-color: #99e2d0;
+$rectangle-green-color: #008766;
+$gray-background: #f6f6f6;
 $align-center: center;
 $flex-direction-col: column;
 $flex-direction-row: row;
@@ -40,7 +40,7 @@ $box-shadow: 0px 4px 10px #00000040;
 	line-height: 18px;
 }
 
-@mixin p-mint-block{
+@mixin p-mint-block {
 	@include display;
 	color: #008766;
 	text-align: $align-center;
@@ -48,7 +48,7 @@ $box-shadow: 0px 4px 10px #00000040;
 	font-weight: 500;
 	line-height: 16px;
 
-	background-color:#99E2D0;
+	background-color: #99e2d0;
 	width: 80px;
 	height: 29px;
 	border-radius: 2px;
@@ -98,6 +98,26 @@ $box-shadow: 0px 4px 10px #00000040;
 	line-height: 18px;
 }
 /**********Fin Mixins**********/
+/**********Keyframes**********/
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes hideLoader {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+/**********Fin Keyframes**********/
 
 * {
 	font-family: "Roboto", sans-serif;
@@ -110,14 +130,36 @@ body {
 	margin: 0 auto;
 }
 
-
 /*****************************Version mobile*****************************/
+.body__loader-container {
+	@include display;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100vw;
+	height: 100vh;
+	background-color: white;
+	animation: hideLoader 0.5s forwards 3s; // J'utilise forwards sinon le loader reste sur la fenetre
+	&__loader {
+		width: 80px;
+		height: 80px;
+		border: 12px solid #f3f3f3;
+		border-radius: 50%;
+		border-top: 12px solid #9356dc;
+		animation: spin 2s linear infinite;
+	}
+}
+
 .body-container {
 	@include display;
 	flex-direction: $flex-direction-col;
 	max-width: 1440px;
 	min-width: 320px;
 	width: $width-100;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s 3.5s, opacity 0.5s ease;
 	/**********Header**********/
 	&__header {
 		@include display;
@@ -140,8 +182,8 @@ body {
 			flex-direction: $flex-direction-row;
 			width: $width-100;
 			gap: 15px;
-			background-color: #EAEAEA;
-			&__location-dot{
+			background-color: #eaeaea;
+			&__location-dot {
 				color: black;
 				font-size: 15px;
 			}
@@ -172,7 +214,7 @@ body {
 				padding: 0 30px;
 				margin: 30px 0 15px 0;
 			}
-			&__p{
+			&__p {
 				text-align: $align-center;
 				width: $width-100;
 				font-size: 18px;
@@ -193,6 +235,11 @@ body {
 					box-shadow: $box-shadow;
 					background: $background-gradient;
 					padding: 15px 25px;
+					&:hover {
+						transition: 500ms;
+						background: linear-gradient(0deg, #a877e3 -11.44%, #ff93e1 123.93%);
+						box-shadow: 0px 4px 10px rgb(133, 133, 133);
+					}
 				}
 			}
 		}
@@ -240,11 +287,12 @@ body {
 						@include display;
 						gap: 25px;
 						&__icon {
-							color: #7E7E7E;
+							color: #7e7e7e;
 							font-size: 18px;
 							&:hover {
-								color: #9356DC;
-
+								transition: 500ms;
+								font-size: 22px;
+								color: #9356dc;
 							}
 						}
 						&__p {
@@ -340,34 +388,41 @@ body {
 							}
 							&__like {
 								@include display;
-								color: black;
-								font-size: 25px;
-								padding: 12px 0 17px 0;
-								&__empty-heart {
-									position: relative;
+								position: relative; // Le conteneur des cœurs
+								width: 25px; // Taille globale du conteneur pour le cœur
+								height: 25px; // Hauteur identique à la largeur
+								&__black-heart {
+									position: absolute; // Pour superposition
+									top: 50%; // Centrage vertical
+									left: 50%; // Centrage horizontal
+									transform: translate(-50%, -50%); // Centrage parfait
+									font-size: 25px; // Cœur noir
+									color: black;
+									z-index: 0; // Derrière le cœur blanc
 								}
-								&__full-heart {
+								&__white-heart {
 									position: absolute;
+									top: 50%;
+									left: 50%;
+									transform: translate(-50%, -50%); // Centrage parfait du cœur blanc
+									font-size: 20px; // Cœur blanc plus petit
 									color: white;
-									cursor: pointer;
-									font-size: 20px;
-									transition: 0.4s linear;
+									z-index: 1; // Devant le cœur noir
+									transition: all 0.4s linear;
 									&:hover {
-										color: #9356DC;
-										background: -webkit-linear-gradient(#9356DC,#FF79DA);
+										font-size: 27px; // Le cœur blanc grandit lors du hover
+										background: linear-gradient(135deg, #9356dc, #ff79da); // Dégradé
 										-webkit-background-clip: text;
 										-webkit-text-fill-color: transparent;
 										background-clip: text;
-										font-size: 27px;
-										transition: 0.4s linear;
 									}
 								}
 							}
-						}										
+						}
 					}
 				}
 			}
-		}	/**********Fin Restaurants**********/
+		} /**********Fin Restaurants**********/
 	}
 	/**********Fin Main**********/
 	/**********Footer**********/
@@ -435,6 +490,12 @@ body {
 	}
 	/**********Fin Footer**********/
 }
+
+.body__loader-container + .body-container {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.5s ease;
+}
 /*****************************Fin Version mobile*****************************/
 
 /*****************************Version tablette*****************************/
@@ -471,14 +532,13 @@ body {
 }
 /*****************************Fin Version tablette*****************************/
 
-
 /*****************************Version desktop*****************************/
 @media screen and (min-width: 1024px) {
 	/**********Header**********/
 	.body-container__header {
 		box-shadow: none;
 		margin: 0;
-		&__logo-container  {
+		&__logo-container {
 			height: 95px;
 			box-shadow: none;
 			&__img {
